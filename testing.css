@@ -1,0 +1,63 @@
+
+    #BusTimeTable{
+        width:95%;
+        margin:0 auto;
+        }
+        * {
+            box-sizing: border-box;
+        }
+    #BusTimeTable ul {
+        list-style-type: none;
+        margin: 0;
+        margin-left: 1em;
+        padding: 0;
+        counter-reset: li-counter;
+        }
+    #BusTimeTable ul li{
+        position: relative;
+        height: auto;
+        margin-bottom: 1.5em;
+        padding: 0.5em;
+        background-color: #F0D756;
+        padding-left: 37px;
+        }
+        
+    #BusTimeTable ul li{
+        color:black;
+        font-family: 'Raleway', sans-serif;
+        }
+        .Route{
+            font-size: 1.3em;
+        }
+        .Timing{
+            float: right;
+            font-weight: bolder;
+            font-size: 1.3em;
+        }
+        
+    #BusTimeTable ul li:hover{
+        box-shadow:inset -1em 0 #6CD6CC;
+        -webkit-transition: box-shadow 0.5s; /* For Safari 3.1 to 6.0 */
+        transition: box-shadow 0.5s;
+        }
+        
+    #BusTimeTable ul li:before {
+        position: absolute;
+        top: -0.3em;
+        left: -0.5em;
+        width: 1.4em;
+        height: 1em;
+        font-size: 1.8em;
+        line-height: 1;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+        background-color: #6CD6CC;
+        transform: rotate(-20deg);
+        -ms-transform: rotate(-20deg);
+        -webkit-transform: rotate(-20deg);
+        z-index: 99;
+        overflow: hidden;
+        content: counter(li-counter);
+        counter-increment: li-counter;
+        }
