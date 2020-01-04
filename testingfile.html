@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HRTC Bus Time Table Karsog</title>
+    <link rel="stylesheet" type="text/css" href="https://github.com/TryMCQ/testingGitHub/blob/master/testing.css">
+    <style>
+/* 
+    #BusTimeTable{
+        width:95%;
+        margin:0 auto;
+        }
+        * {
+            box-sizing: border-box;
+        }
+    #BusTimeTable ul {
+        list-style-type: none;
+        margin: 0;
+        margin-left: 1em;
+        padding: 0;
+        counter-reset: li-counter;
+        }
+    #BusTimeTable ul li{
+        position: relative;
+        height: auto;
+        margin-bottom: 1.5em;
+        padding: 0.5em;
+        background-color: #F0D756;
+        padding-left: 37px;
+        }
+        
+    #BusTimeTable ul li{
+        color:black;
+        font-family: 'Raleway', sans-serif;
+        }
+        .Route{
+            font-size: 1.3em;
+        }
+        .Timing{
+            float: right;
+            font-weight: bolder;
+            font-size: 1.3em;
+        }
+        
+    #BusTimeTable ul li:hover{
+        box-shadow:inset -1em 0 #6CD6CC;
+        -webkit-transition: box-shadow 0.5s; 
+        transition: box-shadow 0.5s;
+        }
+        
+    #BusTimeTable ul li:before {
+        position: absolute;
+        top: -0.3em;
+        left: -0.5em;
+        width: 1.4em;
+        height: 1em;
+        font-size: 1.8em;
+        line-height: 1;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+        background-color: #6CD6CC;
+        transform: rotate(-20deg);
+        -ms-transform: rotate(-20deg);
+        -webkit-transform: rotate(-20deg);
+        z-index: 99;
+        overflow: hidden;
+        content: counter(li-counter);
+        counter-increment: li-counter;
+        } */
+    </style>
+    <script>
+        var HRTCBuses = [
+            /* 0="Start", 1="Middle", 2="End", 3="Timing" */
+            ["Reckong Peo", "", "Jahlma", "12:30 AM"],//1
+            ["Dharmpur", "", "Reckong Peo", "1:30 AM"],
+            ["Dharmshala", "", "Reckong Peo", "3:30 AM"],
+            ["Karsog", "", "Shimla", "5:00 AM"],
+            ["Garyala", "", "Gaddidhar", "5:15 AM"],//5
+            ["Karsog", "", "Rampur", "6:30 AM"],
+            ["Karsog", "", "Ghadatha", "8:00 AM"],
+            ["Karsog", "", "Garyala", "8:00 AM"],
+            ["Karsog", "", "Kuphridhaar", "8:00 AM"],
+            ["Mahunag", "", "Garyala", "8:45 AM"],//10
+            ["Karsog", "", "Takrol", "9:00 AM"],
+            ["Karsog", "", "Shimla", "9:00 AM"],
+            ["Karsog", "", "Punni", "9:00 AM"],
+            ["Karsog", "", "Shankar Dehra", "9:30 AM"],
+            ["Aani", "", "Sundarnagar", "9:30 AM"],//15
+            ["Karsog", "", "Shimla", "10:00 AM"],
+            ["Mandi", "", "Reckong Peo", "10:00 AM"],
+            ["Jayuri", "", "Dharamshala", "10:10 AM"],
+            ["Karsog", "", "Mahunag", "11:00 AM"],
+            ["Karsog", "", "Katol", "11:00 AM"],//20
+            ["Mahunag", "", "Mandi", "11:10 AM"],
+            ["Karsog", "", "Tharmi", "11:15 AM"],
+            ["Karsog", "", "Haridwar", "11:30 AM"],
+            ["Karsog", "", "Soma Kothi", "12:00 PM"],
+            ["Karsog", "", "Belardhaar", "12:15 PM"],//25
+            ["Karsog", "", "Mendi", "12:15 PM"],
+            ["Rampur", "", "Riwalsar", "12:30 PM"],
+            ["Riwalsar", "", "Rampur", "12:30 PM"],
+            ["Karsog", "", "Sainj", "12:45 PM"],
+            ["Karsog", "", "Dehli", "12:45 PM"],//30
+            ["Karsog", "", "Ghadatha", "1:30 PM"],
+            ["Karsog", "", "Punni", "1:40 PM"],
+            ["Karsog", "", "Shankar Dehra", "1:45 PM"],
+            ["Karsog", "", "Shimla", "2:00 PM"],
+            ["Mandi", "", "Mahunag", "2:15 PM"],//35
+            ["Sundarnagar", "", "Aanni", "2:30 PM"],
+            ["Karsog", "", "Khaneudi", "3:00 PM"],
+            ["Karsog", "", "Tharmi", "3:00 PM"],
+            ["Karsog", "", "Parlog", "3:15 PM"],
+            ["Karsog", "", "Mundu", "3:30 PM"],//40
+            ["Karsog", "", "Rodidhaar", "3:40 PM"],
+            ["Karsog", "", "Dateha", "3:45 PM"],
+            ["Karsog", "", "Shavant", "4:00 PM"],
+            ["Karsog", "", "Sarcha", "4:00 PM"],
+            ["Karsog", "", "Pokhi", "4:00 PM"],//45
+            ["Dharmshala", "", "jyuri", "4:15 PM"],
+            ["Karsog", "", "Ghadatha", "4:30 PM"],
+            ["Shimla", "", "Sarhi", "4:30 PM"],
+            ["Karsog", "", "Sainj", "4:30 PM"],
+            ["Karsog", "", "Dehli", "5:00 PM"],//50
+            ["Karsog", "", "Mendi", "5:15 PM"],
+            ["Karsog", "", "Shankar Dehra", "5:15 PM"],
+            ["Rampur", "", "Kuphridhaar", "5:15 PM"],
+            ["Gaddidhaar", "", "Garyala", "5:30 PM"],
+            ["Karsog", "", "Salana", "6:00 PM"],//55
+            ["Shimla", "", "Takrol", "6:30 PM"],
+            ["Sangla", "", "Mandi", "8:00 PM"],
+            ["Jahlma", "", "Reckong Peo", "9:30 PM"],
+            ["Reckong Peo", "", "Dharmpur", "10:00 PM"],
+            ["Reckong Peo", "", "Dharmshala", "11:00 PM"],//60
+            ["Mandi", "", "Sangla", "11:30 PM"],
+            // ["", "", "", ""],
+        ]
+    </script>
+</head>
+<body>
+    <h1>HRTC Buses Timing From Karsog Bus Stand</h1>
+    <!--THIS IS THE TEMPELATE OF THE BUS TIME TABLE KARSOG-->
+    <template id="BusTemp">
+        <li class="NewBus">
+            <span class="BusRoute">
+                <span class="First"></span>
+                <span class="Middle"></span>
+                <span class="End"></span>
+            </span>
+            <span class="Timing"></span>
+        </li>
+    </template>
+    <div id="BusTimeTable">
+        <ul id="HRTCBusTimeTableKarsog"></ul>
+    </div>
+    
+
+    <script>
+        for (var i = 0; i < HRTCBuses.length; i++) {
+            var BusTemp = document.getElementById("BusTemp").content;
+            var AddBus = document.importNode(BusTemp, true);
+            document.getElementById("HRTCBusTimeTableKarsog").appendChild(AddBus);
+                var BusTimingTable = document.getElementById("HRTCBusTimeTableKarsog");
+                    var BusNo = BusTimingTable.children[i];
+                        var Route = BusNo.children[0];
+                            var First = Route.children[0];
+                                First.innerHTML = HRTCBuses[i][0]+"-";
+                            var Middle= Route.children[1]
+                                Middle.innerHTML = HRTCBuses[i][1];
+                            var End = Route.children[2]
+                                End.innerHTML = "-"+HRTCBuses[i][2];
+                        var Timing = BusNo.children[1]
+                            Timing.innerHTML = HRTCBuses[i][3];
+        }
+    </script>
+</body>
+</html>
